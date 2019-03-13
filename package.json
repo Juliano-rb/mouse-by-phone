@@ -1,0 +1,27 @@
+{
+  "name": "mouse-by-phone",
+  "version": "1.0.0",
+  "description": "Take control over your computer's mouse using your phone's gyroscope and acelerometer sensors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juliano-rb/mouse-by-phone.git"
+  },
+  "keywords": [
+    "remote",
+    "control",
+    "mouse",
+    "smartphone",
+    "gyroscope",
+    "acelerometer"
+  ],
+  "author": "Juliano R Barbosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juliano-rb/mouse-by-phone/issues"
+  },
+  "homepage": "https://github.com/Juliano-rb/mouse-by-phone#readme"
+}
