@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/Juliano-rb/mouse-by-phone/issues"
   },
-  "homepage": "https://github.com/Juliano-rb/mouse-by-phone#readme"
+  "homepage": "https://github.com/Juliano-rb/mouse-by-phone#readme",
+  "dependencies": {}
 }
