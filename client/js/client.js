@@ -1,6 +1,3 @@
-
-Client();
-
 function Client(){
     const clientConfiguration = {};
 
@@ -12,11 +9,11 @@ function Client(){
     }
 
     function StartLiveGyro(){
-        Log("Starting Gyro...")
+        StartGyroDataFetching(function(data){console.log(data)});
     }
 
     function StopLiveGyro(){
-        Log("Stopping Gyro.")
+        StopGyroDataFetching();
     }
 
     function LeftMouseClick(){
@@ -60,3 +57,4 @@ function Client(){
     }
 }
 
+Client();
