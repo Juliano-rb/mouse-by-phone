@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Remote mouse control client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    
+
+</head>
+<body>
+    <div class="card" style="width: 18rem; border: 0; margin: 0 auto ;text-align: center">
+        <div class="card-body">
+            <h2 class="card-title">Client</h2>
+            <p class="card-text">Remote control client.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#sensorsInfo" aria-expanded="true" aria-controls="collapseOne">
+                Configurations
+            </button>
+            </h5>
+        </div>
+    </div>
+
+    <div id="sensorsInfo" class="collapse" aria-labelledby="headingOne">
+        <div class="card card-body">
+            <div class="input-group col-sm">
+                <span class="input-group-addon">Server IP: </span>
+                <input id="serverIpInput" type="text" class="form-control">
+            </div>
+            <br>
+            <div class="input-group col-sm">
+                <span class="input-group-addon">Server Port: </span>
+                <input id="serverPortInput" type="text" class="form-control">
+            </div>
+            <br>
+            <div class="input-group col-sm">
+                <span class="input-group-addon">Threshold:</span>
+                <input id="mouseThresholdInput" type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="logs">
+        <textarea class="col-xs-12 form-control" id="logAreaInput" style="height:100px" placeholder="Log area..." disabled></textarea>
+    </div>
+
+    <input id = "setHeadBtn" type="button" value="Set Head Direction" class="col-sm btn-warning"/>
+
+    <div class="btn-group-lg align-bottom" role="group" aria-label="Basic example">
+        <input id="startGyroBtn" type="button" value="START" class="btn-outline-primary btn-lg col-sm"/>
+        <input id="stopGyroBtn" type="button"  value="STOP" class="btn-outline-secondary btn-lg col-sm"/>
+    </div>
+
+    <div class="btn-group btn-matrix" style="width:100%;">
+        <button id="leftClickBtn" type="button" class="btn btn-primary">LEFT Click</button>
+        <button id="rightClickBtn" type="button" class="btn btn-primary">RIGHT Click</button>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/gyronorm.complete.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/SensorsHandlerAndComunication.js"></script>
+    <script src="js/client.js"></script>
+
+</body>
+</html>
