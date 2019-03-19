@@ -9,7 +9,7 @@ function Client(){
     }
 
     function StartLiveGyro(){
-        StartGyroDataFetching(function(data){console.log(data)});
+        StartGyroDataFetching(handleSensorsData);
     }
 
     function StopLiveGyro(){
@@ -54,6 +54,54 @@ function Client(){
 
         document.getElementById("leftClickBtn").onclick=LeftMouseClick;
         document.getElementById("rightClickBtn").onclick=RightMouseClick;
+    }
+
+    function handleSensorsData(data){
+        var clientData=
+        {
+            type: "sensorsData",
+            roationRate:{
+                x : data.dm.alpha,
+                y : data.dm.beta,
+                z : data.dm.gamma
+            },
+            aceleration:{
+                x : data.dm.x,
+                y : data.dm.y,
+                z : data.dm.z
+            },
+            acelerationWithGravity:{
+                x : data.dm.gx,
+                y : data.dm.gy,
+                z : data.dm.gz
+            }
+        };
+
+        sendClientData(clientData);
+    }
+
+    function sendClientData(data){
+        var dataTosend = {
+            title : "sensors_data",
+            message : data
+        }; 
+
+        if(!clientConfiguration.serverIP || !clientConfiguration.serverPort ){
+            Log("Please fill the Server IP and Server Port on configurations");
+        }
+
+        const serverUrl = "http://" + clientConfiguration.serverIP + ":" + clientConfiguration.serverPort;
+        //console.log( serverUrl );
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(dataTosend),
+            contentType: 'application/json',
+            url: serverUrl,						
+            success: function(data) {
+                console.log(JSON.stringify(data));
+            }
+        });
     }
 }
 
