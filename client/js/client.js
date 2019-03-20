@@ -1,5 +1,6 @@
 function Client(){
     const clientConfiguration = {};
+    var chanelIsOpen = true;
 
     Init();
 
@@ -76,11 +77,13 @@ function Client(){
                 z : data.dm.gz
             }
         };
-
-        sendClientData(clientData);
+        //if(chanelIsOpen)
+            sendClientData(clientData);
     }
 
     function sendClientData(data){
+        chanelIsOpen = false;
+
         var dataTosend = {
             title : "sensors_data",
             message : data
@@ -91,7 +94,6 @@ function Client(){
         }
 
         const serverUrl = "http://" + clientConfiguration.serverIP + ":" + clientConfiguration.serverPort;
-        //console.log( serverUrl );
 
         $.ajax({
             type: 'POST',
@@ -99,7 +101,14 @@ function Client(){
             contentType: 'application/json',
             url: serverUrl,						
             success: function(data) {
+                chanelIsOpen = true;
                 console.log(JSON.stringify(data));
+            },
+            error: function(data){
+                Log("Error in sensors data sending. Stopping...")
+                //console.log(JSON.stringify(data));
+                chanelIsOpen = true;
+                StopLiveGyro();
             }
         });
     }
