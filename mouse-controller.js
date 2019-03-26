@@ -1,8 +1,10 @@
 var robot = require("robotjs");
 
 function mouseController(){
-    const mouseDelay = 2;
-    const deadZoneSize = 3;
+    var mouseDelay = 2;
+    var deadZoneSize = 3;
+    var mouseSpeed = 1;
+    
     robot.setMouseDelay(mouseDelay);
 
     module.exports.moveMouse = function(deltaX,deltaY){
@@ -16,6 +18,14 @@ function mouseController(){
         }
 
         robot.moveMouse(mouse.x + -deltaX, mouse.y + -deltaY);
+    }
+
+    module.exports.setMouseDeadzone = function(deadZoneValue){
+        deadZoneSize = deadZoneValue;
+    }
+
+    module.exports.setMouseSpeed = function(speedValue){
+        mouseSpeed = speedValue;
     }
 }
 
