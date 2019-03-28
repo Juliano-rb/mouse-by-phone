@@ -29,19 +29,34 @@
 
     <div id="sensorsInfo" class="collapse" aria-labelledby="headingOne">
         <div class="card card-body">
-            <div class="input-group col-sm">
-                <span class="input-group-addon">Server IP: </span>
-                <input id="serverIpInput" type="text" class="form-control" value = "127.0.0.1">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-addon">Server IP: </span>
+                </div>
+                <input id="serverIpInput" type="text" class="form-control" value = "">
             </div>
-            <br>
-            <div class="input-group col-sm">
-                <span class="input-group-addon">Server Port: </span>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-addon">Server Port: </span>
+                </div>
                 <input id="serverPortInput" type="text" class="form-control" value = "3000">
             </div>
-            <br>
-            <div class="input-group col-sm">
-                <span class="input-group-addon">Threshold:</span>
-                <input id="mouseThresholdInput" type="text" class="form-control">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-addon">Mouse deadzone:</span>
+                    <span id="mouseDeadzoneLabel" class="input-group-addon">0</span>
+                </div>
+                <input id="mouseDeadzone" type="range" min="0" max="10" value = "0" step="0.1" class="form-control-range">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-addon">Mouse speed:</span>
+                    <span id="mouseSpeedLabel" class="input-group-addon">1</span>
+                </div>
+                <input id="mouseSpeed" type="range" min="1" max="10" value = "0"  step="0.1" class="form-control-range">
             </div>
         </div>
     </div>
@@ -62,8 +77,8 @@
         <button id="rightClickBtn" type="button" class="btn btn-primary">RIGHT Click</button>
     </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/gyronorm.complete.js"></script>
+    <script src="js/lib/jquery-3.3.1.min.js"></script>
+    <script src="js/lib/gyronorm.complete.js"></script>
     <script src="bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/SensorsHandlerAndComunication.js"></script>
     <script src="js/client.js"></script>

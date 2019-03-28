@@ -38,8 +38,9 @@ function Client(){
         Log("Updating client configurations.")
         clientConfiguration.serverIP = document.getElementById("serverIpInput").value
         clientConfiguration.serverPort = document.getElementById("serverPortInput").value
-        clientConfiguration.mouseThreshold = document.getElementById("mouseThresholdInput").value
-        
+        clientConfiguration.mouseDeadZone = document.getElementById("mouseDeadzone").value
+        clientConfiguration.mouseSpeed = document.getElementById("mouseSpeed").value
+
         console.log(clientConfiguration)
     }
 
@@ -49,7 +50,11 @@ function Client(){
 
         document.getElementById("serverIpInput").onchange = updateClientConfigs;
         document.getElementById("serverPortInput").onchange = updateClientConfigs;
-        document.getElementById("mouseThresholdInput").onchange = updateClientConfigs;
+        document.getElementById("mouseDeadzone").onchange = updateClientConfigs;
+        document.getElementById("mouseSpeed").onchange = updateClientConfigs;
+
+        document.getElementById("mouseDeadzone").oninput = updateGuiLabels;
+        document.getElementById("mouseSpeed").oninput = updateGuiLabels;
 
         document.getElementById("setHeadBtn").onclick=SetHead;
 
@@ -57,11 +62,16 @@ function Client(){
         document.getElementById("rightClickBtn").onclick=RightMouseClick;
     }
 
+    function updateGuiLabels(){
+        document.getElementById("mouseSpeedLabel").innerHTML = document.getElementById("mouseSpeed").value;
+        document.getElementById("mouseDeadzoneLabel").innerHTML = document.getElementById("mouseDeadzone").value;
+    }
+
     function handleSensorsData(data){
         var clientData=
         {
             type: "sensorsData",
-            roationRate:{
+            rotationRate:{
                 x : data.dm.alpha,
                 y : data.dm.beta,
                 z : data.dm.gamma
@@ -77,7 +87,7 @@ function Client(){
                 z : data.dm.gz
             }
         };
-        //if(chanelIsOpen)
+        if(chanelIsOpen)
             sendClientData(clientData);
     }
 
