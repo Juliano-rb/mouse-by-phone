@@ -16,7 +16,6 @@ function startServer(){
       server.use(bodyParser.json()); // for parsing application/json
       server.use(cors()); 
 
-
       server.listen(3000, ()=>{
          console.log('Express server started at port 3000');
          console.log('Go to ' + '\x1b[36m%s\x1b[0m' + ":3000", 'your-ip');  //cyan)
